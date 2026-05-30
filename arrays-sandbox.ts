@@ -1,6 +1,7 @@
 // ============================================================
-//  ПРАКТИКА: МАССИВЫ В JAVASCRIPT
-//  Запуск: node arrays_practice.js
+//  ПРАКТИКА: МАССИВЫ В TYPESCRIPT
+//  Запуск: npx ts-node arrays_practice.ts
+//       или: tsc arrays_practice.ts && node arrays_practice.js
 // ============================================================
 //
 //  КАК РАБОТАТЬ С ФАЙЛОМ:
@@ -24,7 +25,7 @@
 //  Пример: sum([1, 2, 3, 4]) → 10
 //          sum([])            → 0
 
-function sum(arr) {
+function sum(arr: number[]): number {
     throw new Error("не реализовано");
 }
 
@@ -38,7 +39,7 @@ function sum(arr) {
 //  Пример: findMax([3, 1, 7, 2]) → 7
 //          findMax([-5, -1, -3]) → -1
 
-function findMax(arr) {
+function findMax(arr: number[]): number {
     throw new Error("не реализовано");
 }
 
@@ -46,13 +47,13 @@ function findMax(arr) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 3 — Подсчёт вхождений
 // ─────────────────────────────────────────────
-//  Принимает: массив и значение target
+//  Принимает: массив строк и строку target
 //  Возвращает: сколько раз target встречается в массиве
 //
-//  Пример: countElement([1, 2, 1, 3, 1], 1) → 3
+//  Пример: countElement(['a', 'b', 'a'], 'a') → 2
 //          countElement(['a', 'b', 'a'], 'c') → 0
 
-function countElement(arr, target) {
+function countElement(arr: string[], target: string): number {
     throw new Error("не реализовано");
 }
 
@@ -60,14 +61,13 @@ function countElement(arr, target) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 4 — Разворот массива
 // ─────────────────────────────────────────────
-//  Принимает: массив
+//  Принимает: массив строк
 //  Возвращает: НОВЫЙ массив с элементами в обратном порядке
 //  Исходный массив трогать нельзя, метод .reverse() не использовать
 //
-//  Пример: reverseArr([1, 2, 3])       → [3, 2, 1]
-//          reverseArr(['a', 'b', 'c']) → ['c', 'b', 'a']
+//  Пример: reverseArr(['a', 'b', 'c']) → ['c', 'b', 'a']
 
-function reverseArr(arr) {
+function reverseArr(arr: string[]): string[] {
     throw new Error("не реализовано");
 }
 
@@ -82,7 +82,7 @@ function reverseArr(arr) {
 //  Пример: filterEven([1, 2, 3, 4, 5, 6]) → [2, 4, 6]
 //          filterEven([1, 3, 5])           → []
 
-function filterEven(arr) {
+function filterEven(arr: number[]): number[] {
     throw new Error("не реализовано");
 }
 
@@ -90,14 +90,13 @@ function filterEven(arr) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 6 — Удаление дубликатов
 // ─────────────────────────────────────────────
-//  Принимает: массив
+//  Принимает: массив строк
 //  Возвращает: НОВЫЙ массив без повторяющихся элементов
 //  Первое вхождение каждого элемента сохраняется, порядок — тоже
 //
-//  Пример: removeDuplicates([1, 2, 1, 3, 2]) → [1, 2, 3]
-//          removeDuplicates(['a','b','a','c']) → ['a','b','c']
+//  Пример: removeDuplicates(['a','b','a','c']) → ['a','b','c']
 
-function removeDuplicates(arr) {
+function removeDuplicates(arr: string[]): string[] {
     throw new Error("не реализовано");
 }
 
@@ -105,14 +104,14 @@ function removeDuplicates(arr) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 7 — Сплющивание массива (один уровень)
 // ─────────────────────────────────────────────
-//  Принимает: массив, в котором могут быть вложенные массивы
-//  Возвращает: новый массив, где вложенные массивы раскрыты на один уровень
+//  Принимает: массив массивов чисел
+//  Возвращает: новый массив, где все вложенные массивы раскрыты в один уровень
 //  Методы .flat() и .flatMap() не использовать
 //
-//  Пример: flattenOne([1, [2, 3], [4, 5]]) → [1, 2, 3, 4, 5]
-//          flattenOne([[1, 2], [3, [4]]]) → [1, 2, 3, [4]]  // глубже одного уровня не раскрываем!
+//  Пример: flatten([[1, 2], [3, 4], [5]]) → [1, 2, 3, 4, 5]
+//          flatten([[1, 2], [3, 4]])       → [1, 2, 3, 4]
 
-function flattenOne(arr) {
+function flatten(arr: number[][]): number[] {
     throw new Error("не реализовано");
 }
 
@@ -120,16 +119,15 @@ function flattenOne(arr) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 8 — Пересечение массивов
 // ─────────────────────────────────────────────
-//  Принимает: два массива
+//  Принимает: два массива строк
 //  Возвращает: НОВЫЙ массив из элементов, которые есть в обоих массивах
 //  Дубликаты в результате не нужны — каждый элемент входит один раз
 //  Порядок определяется первым массивом
 //
-//  Пример: intersection([1, 2, 3, 4], [2, 4, 6])     → [2, 4]
-//          intersection(['a','b','c'], ['b','c','d'])  → ['b', 'c']
-//          intersection([1, 1, 2], [1, 2])             → [1, 2]
+//  Пример: intersection(['a','b','c'], ['b','c','d'])  → ['b', 'c']
+//          intersection(['a','a','b'], ['a','b'])       → ['a', 'b']
 
-function intersection(arr1, arr2) {
+function intersection(arr1: string[], arr2: string[]): string[] {
     throw new Error("не реализовано");
 }
 
@@ -137,14 +135,14 @@ function intersection(arr1, arr2) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 9 — Разбивка на части (chunks)
 // ─────────────────────────────────────────────
-//  Принимает: массив и размер chunk (size > 0)
+//  Принимает: массив чисел и размер chunk (size > 0)
 //  Возвращает: массив массивов, каждый длиной size
 //  Последний chunk может быть короче, если элементов не хватает
 //
 //  Пример: chunk([1, 2, 3, 4, 5], 2) → [[1, 2], [3, 4], [5]]
 //          chunk([1, 2, 3, 4], 4)    → [[1, 2, 3, 4]]
 
-function chunk(arr, size) {
+function chunk(arr: number[], size: number): number[][] {
     throw new Error("не реализовано");
 }
 
@@ -152,15 +150,15 @@ function chunk(arr, size) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 10 — Своя реализация map
 // ─────────────────────────────────────────────
-//  Принимает: массив и функцию-преобразователь fn(element, index)
-//  Возвращает: НОВЫЙ массив, где каждый элемент заменён результатом fn
+//  Принимает: массив чисел и функцию-преобразователь fn(element, index)
+//  Возвращает: НОВЫЙ массив чисел, где каждый элемент заменён результатом fn
 //  Встроенный метод .map() не использовать
 //
 //  Пример:
-//    myMap([1, 2, 3], x => x * 2)         → [2, 4, 6]
-//    myMap(['a', 'b'], (x, i) => i + x)   → ['0a', '1b']
+//    myMap([1, 2, 3], x => x * 2)       → [2, 4, 6]
+//    myMap([1, 2, 3], (x, i) => x + i)  → [1, 3, 5]
 
-function myMap(arr, fn) {
+function myMap(arr: number[], fn: (element: number, index: number) => number): number[] {
     throw new Error("не реализовано");
 }
 
@@ -168,15 +166,15 @@ function myMap(arr, fn) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 11 — Своя реализация filter
 // ─────────────────────────────────────────────
-//  Принимает: массив и функцию-предикат fn(element, index) → boolean
+//  Принимает: массив чисел и функцию-предикат fn(element, index) → boolean
 //  Возвращает: НОВЫЙ массив из элементов, для которых fn вернула true
 //  Встроенный метод .filter() не использовать
 //
 //  Пример:
-//    myFilter([1, 2, 3, 4], x => x > 2)   → [3, 4]
-//    myFilter(['cat', 'dog', 'cow'], s => s.startsWith('c')) → ['cat', 'cow']
+//    myFilter([1, 2, 3, 4], x => x > 2)         → [3, 4]
+//    myFilter([1, 2, 3, 4, 5], x => x % 2 === 0) → [2, 4]
 
-function myFilter(arr, fn) {
+function myFilter(arr: number[], fn: (element: number, index: number) => boolean): number[] {
     throw new Error("не реализовано");
 }
 
@@ -184,16 +182,15 @@ function myFilter(arr, fn) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 12 — Своя реализация reduce
 // ─────────────────────────────────────────────
-//  Принимает: массив, функцию fn(accumulator, element) и начальное значение initial
-//  Возвращает: одно значение — результат последовательного применения fn
+//  Принимает: массив чисел, функцию fn(accumulator, element) и начальное значение
+//  Возвращает: одно число — результат последовательного применения fn
 //  Встроенный метод .reduce() не использовать
 //
 //  Пример:
-//    myReduce([1, 2, 3, 4], (acc, x) => acc + x, 0)        → 10
-//    myReduce(['a','b','c'], (acc, x) => acc + x, '')       → 'abc'
-//    myReduce([1,2,3], (acc, x) => [...acc, x * 2], [])    → [2, 4, 6]
+//    myReduce([1, 2, 3, 4], (acc, x) => acc + x, 0)               → 10
+//    myReduce([3, 1, 7, 2], (acc, x) => (x > acc ? x : acc), 0)   → 7
 
-function myReduce(arr, fn, initial) {
+function myReduce(arr: number[], fn: (accumulator: number, element: number) => number, initial: number): number {
     throw new Error("не реализовано");
 }
 
@@ -201,17 +198,14 @@ function myReduce(arr, fn, initial) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 13 — Группировка элементов
 // ─────────────────────────────────────────────
-//  Принимает: массив и функцию fn(element) → string (ключ группы)
-//  Возвращает: объект, где ключи — результаты fn, значения — массивы элементов
+//  Принимает: массив строк и функцию fn(element) → string (ключ группы)
+//  Возвращает: объект, где ключи — результаты fn, значения — массивы строк
 //
 //  Пример:
-//    groupBy([1, 2, 3, 4, 5], x => x % 2 === 0 ? 'even' : 'odd')
-//    → { odd: [1, 3, 5], even: [2, 4] }
-//
-//    groupBy(['one', 'two', 'three'], s => s.length)
-//    → { 3: ['one', 'two'], 5: ['three'] }
+//    groupBy(['one', 'two', 'three', 'cat'], s => s.length === 3 ? 'short' : 'long')
+//    → { short: ['one', 'two', 'cat'], long: ['three'] }
 
-function groupBy(arr, fn) {
+function groupBy(arr: string[], fn: (element: string) => string): Record<string, string[]> {
     throw new Error("не реализовано");
 }
 
@@ -219,15 +213,15 @@ function groupBy(arr, fn) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 14 — Слияние двух массивов в пары (zip)
 // ─────────────────────────────────────────────
-//  Принимает: два массива одинаковой длины
-//  Возвращает: массив пар [a[i], b[i]]
+//  Принимает: массив чисел и массив строк
+//  Возвращает: массив пар [number, string]
 //  Если длины разные — берём длину более короткого
 //
 //  Пример:
 //    zip([1, 2, 3], ['a', 'b', 'c'])   → [[1,'a'], [2,'b'], [3,'c']]
 //    zip([1, 2], ['x', 'y', 'z'])      → [[1,'x'], [2,'y']]
 
-function zip(arr1, arr2) {
+function zip(arr1: number[], arr2: string[]): [number, string][] {
     throw new Error("не реализовано");
 }
 
@@ -235,15 +229,15 @@ function zip(arr1, arr2) {
 // ─────────────────────────────────────────────
 //  ЗАДАЧА 15 — Своя реализация flatMap
 // ─────────────────────────────────────────────
-//  Принимает: массив и функцию fn(element) → array
+//  Принимает: массив чисел и функцию fn(element) → number[]
 //  Возвращает: массив, в котором результаты fn склеены в один плоский список
 //  Встроенные .flatMap() и .flat() не использовать
 //
 //  Пример:
-//    myFlatMap([1, 2, 3], x => [x, x * 10])       → [1, 10, 2, 20, 3, 30]
-//    myFlatMap(['hi', 'bye'], s => s.split(''))    → ['h','i','b','y','e']
+//    myFlatMap([1, 2, 3], x => [x, x * 10])  → [1, 10, 2, 20, 3, 30]
+//    myFlatMap([1, 2, 3], x => [x, x + 1])   → [1, 2, 2, 3, 3, 4]
 
-function myFlatMap(arr, fn) {
+function myFlatMap(arr: number[], fn: (element: number) => number[]): number[] {
     throw new Error("не реализовано");
 }
 
@@ -255,7 +249,7 @@ function myFlatMap(arr, fn) {
 let passed = 0;
 let failed = 0;
 
-function deepEqual(a, b) {
+function deepEqual(a: unknown, b: unknown): boolean {
     if (a === b) return true;
     if (typeof a !== typeof b) return false;
     if (Array.isArray(a) && Array.isArray(b)) {
@@ -263,34 +257,36 @@ function deepEqual(a, b) {
         return a.every((v, i) => deepEqual(v, b[i]));
     }
     if (typeof a === "object" && a !== null && b !== null) {
-        const keysA = Object.keys(a).sort();
-        const keysB = Object.keys(b).sort();
+        const keysA = Object.keys(a as object).sort();
+        const keysB = Object.keys(b as object).sort();
         if (!deepEqual(keysA, keysB)) return false;
-        return keysA.every((k) => deepEqual(a[k], b[k]));
+        return keysA.every((k) =>
+            deepEqual((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k])
+        );
     }
     return false;
 }
 
-function test(label, fn) {
+function test(label: string, fn: () => void): void {
     try {
         fn();
         console.log(`  ✓  ${label}`);
         passed++;
     } catch (e) {
         console.log(`  ✗  ${label}`);
-        console.log(`       ${e.message}`);
+        console.log(`       ${(e as Error).message}`);
         failed++;
     }
 }
 
-function expect(actual) {
+function expect(actual: unknown) {
     return {
-        toBe(expected) {
+        toBe(expected: unknown): void {
             if (!deepEqual(actual, expected)) {
                 throw new Error(`ожидалось: ${JSON.stringify(expected)}, получено: ${JSON.stringify(actual)}`);
             }
         },
-        toEqual(expected) {
+        toEqual(expected: unknown): void {
             if (!deepEqual(actual, expected)) {
                 throw new Error(`ожидалось: ${JSON.stringify(expected)}, получено: ${JSON.stringify(actual)}`);
             }
@@ -298,7 +294,7 @@ function expect(actual) {
     };
 }
 
-function describe(title, fn) {
+function describe(title: string, fn: () => void): void {
     console.log(`\n${title}`);
     fn();
 }
@@ -322,23 +318,23 @@ describe("Задача 2 — findMax", () => {
 });
 
 describe("Задача 3 — countElement", () => {
-    test("элемент встречается несколько раз", () => expect(countElement([1, 2, 1, 3, 1], 1)).toBe(3));
-    test("элемент не встречается", () => expect(countElement([1, 2, 3], 5)).toBe(0));
-    test("строки", () => expect(countElement(["a", "b", "a", "c", "a"], "a")).toBe(3));
-    test("пустой массив", () => expect(countElement([], 1)).toBe(0));
-    test("элемент встречается один раз", () => expect(countElement([1, 2, 3], 2)).toBe(1));
+    test("элемент встречается несколько раз", () => expect(countElement(["a", "b", "a", "c", "a"], "a")).toBe(3));
+    test("элемент не встречается", () => expect(countElement(["a", "b", "c"], "z")).toBe(0));
+    test("пустой массив", () => expect(countElement([], "a")).toBe(0));
+    test("элемент встречается один раз", () => expect(countElement(["a", "b", "c"], "b")).toBe(1));
+    test("все одинаковые", () => expect(countElement(["x", "x", "x"], "x")).toBe(3));
 });
 
 describe("Задача 4 — reverseArr", () => {
-    test("обычный массив", () => expect(reverseArr([1, 2, 3])).toEqual([3, 2, 1]));
-    test("один элемент", () => expect(reverseArr([1])).toEqual([1]));
-    test("строки", () => expect(reverseArr(["a", "b", "c"])).toEqual(["c", "b", "a"]));
+    test("обычный массив", () => expect(reverseArr(["a", "b", "c"])).toEqual(["c", "b", "a"]));
+    test("один элемент", () => expect(reverseArr(["a"])).toEqual(["a"]));
+    test("два элемента", () => expect(reverseArr(["a", "b"])).toEqual(["b", "a"]));
     test("исходный массив не изменяется", () => {
-        const original = [1, 2, 3];
+        const original = ["a", "b", "c"];
         reverseArr(original);
-        expect(original).toEqual([1, 2, 3]);
+        expect(original).toEqual(["a", "b", "c"]);
     });
-    test("чётное количество элементов", () => expect(reverseArr([1, 2, 3, 4])).toEqual([4, 3, 2, 1]));
+    test("чётное количество элементов", () => expect(reverseArr(["a", "b", "c", "d"])).toEqual(["d", "c", "b", "a"]));
 });
 
 describe("Задача 5 — filterEven", () => {
@@ -350,27 +346,27 @@ describe("Задача 5 — filterEven", () => {
 });
 
 describe("Задача 6 — removeDuplicates", () => {
-    test("с дубликатами", () => expect(removeDuplicates([1, 2, 1, 3, 2])).toEqual([1, 2, 3]));
-    test("без дубликатов — порядок сохраняется", () => expect(removeDuplicates([1, 2, 3])).toEqual([1, 2, 3]));
-    test("строки", () => expect(removeDuplicates(["a", "b", "a", "c"])).toEqual(["a", "b", "c"]));
+    test("с дубликатами", () => expect(removeDuplicates(["a", "b", "a", "c", "b"])).toEqual(["a", "b", "c"]));
+    test("без дубликатов — порядок сохраняется", () => expect(removeDuplicates(["a", "b", "c"])).toEqual(["a", "b", "c"]));
     test("пустой массив", () => expect(removeDuplicates([])).toEqual([]));
-    test("все одинаковые", () => expect(removeDuplicates([5, 5, 5])).toEqual([5]));
+    test("все одинаковые", () => expect(removeDuplicates(["x", "x", "x"])).toEqual(["x"]));
+    test("все уникальные", () => expect(removeDuplicates(["a", "b", "c", "d"])).toEqual(["a", "b", "c", "d"]));
 });
 
-describe("Задача 7 — flattenOne", () => {
-    test("один уровень вложенности", () => expect(flattenOne([1, [2, 3], [4, 5]])).toEqual([1, 2, 3, 4, 5]));
-    test("без вложенности", () => expect(flattenOne([1, 2, 3])).toEqual([1, 2, 3]));
-    test("глубже одного уровня не раскрываем", () => expect(flattenOne([[1, 2], [3, [4]]])).toEqual([1, 2, 3, [4]]));
-    test("пустой массив", () => expect(flattenOne([])).toEqual([]));
-    test("вложенные пустые массивы", () => expect(flattenOne([[], [1], []])).toEqual([1]));
+describe("Задача 7 — flatten", () => {
+    test("обычный случай", () => expect(flatten([[1, 2], [3, 4], [5]])).toEqual([1, 2, 3, 4, 5]));
+    test("без остатка", () => expect(flatten([[1, 2], [3, 4]])).toEqual([1, 2, 3, 4]));
+    test("вложенные пустые массивы", () => expect(flatten([[], [1], []])).toEqual([1]));
+    test("один вложенный массив", () => expect(flatten([[1, 2, 3]])).toEqual([1, 2, 3]));
+    test("пустой массив", () => expect(flatten([])).toEqual([]));
 });
 
 describe("Задача 8 — intersection", () => {
-    test("общие элементы есть", () => expect(intersection([1, 2, 3, 4], [2, 4, 6])).toEqual([2, 4]));
-    test("строки", () => expect(intersection(["a", "b", "c"], ["b", "c", "d"])).toEqual(["b", "c"]));
-    test("дубликаты в первом массиве — в результате один раз", () => expect(intersection([1, 1, 2], [1, 2])).toEqual([1, 2]));
-    test("нет общих элементов", () => expect(intersection([1, 2, 3], [4, 5, 6])).toEqual([]));
-    test("один из массивов пустой", () => expect(intersection([1, 2, 3], [])).toEqual([]));
+    test("общие элементы есть", () => expect(intersection(["a", "b", "c"], ["b", "c", "d"])).toEqual(["b", "c"]));
+    test("дубликаты в первом массиве — в результате один раз", () => expect(intersection(["a", "a", "b"], ["a", "b"])).toEqual(["a", "b"]));
+    test("нет общих элементов", () => expect(intersection(["a", "b"], ["c", "d"])).toEqual([]));
+    test("один из массивов пустой", () => expect(intersection(["a", "b"], [])).toEqual([]));
+    test("полное совпадение", () => expect(intersection(["a", "b"], ["a", "b"])).toEqual(["a", "b"]));
 });
 
 describe("Задача 9 — chunk", () => {
@@ -384,41 +380,41 @@ describe("Задача 9 — chunk", () => {
 describe("Задача 10 — myMap", () => {
     test("умножение на 2", () => expect(myMap([1, 2, 3], (x) => x * 2)).toEqual([2, 4, 6]));
     test("возведение в квадрат", () => expect(myMap([1, 2, 3, 4], (x) => x ** 2)).toEqual([1, 4, 9, 16]));
-    test("fn получает индекс", () => expect(myMap(["a", "b", "c"], (x, i) => i + x)).toEqual(["0a", "1b", "2c"]));
+    test("fn получает индекс", () => expect(myMap([10, 20, 30], (x, i) => x + i)).toEqual([10, 21, 32]));
     test("пустой массив", () => expect(myMap([], (x) => x)).toEqual([]));
-    test("строки в верхний регистр", () => expect(myMap(["hi", "bye"], (s) => s.toUpperCase())).toEqual(["HI", "BYE"]));
+    test("все в ноль", () => expect(myMap([1, 2, 3], () => 0)).toEqual([0, 0, 0]));
 });
 
 describe("Задача 11 — myFilter", () => {
     test("числа больше 2", () => expect(myFilter([1, 2, 3, 4], (x) => x > 2)).toEqual([3, 4]));
     test("чётные числа", () => expect(myFilter([1, 2, 3, 4, 5], (x) => x % 2 === 0)).toEqual([2, 4]));
-    test("строки по первой букве", () => expect(myFilter(["cat", "dog", "cow"], (s) => s.startsWith("c"))).toEqual(["cat", "cow"]));
     test("ничего не прошло фильтр", () => expect(myFilter([1, 2, 3], (x) => x > 10)).toEqual([]));
     test("всё прошло фильтр", () => expect(myFilter([1, 2, 3], (x) => x > 0)).toEqual([1, 2, 3]));
+    test("пустой массив", () => expect(myFilter([], (x) => x > 0)).toEqual([]));
 });
 
 describe("Задача 12 — myReduce", () => {
     test("сумма чисел", () => expect(myReduce([1, 2, 3, 4], (acc, x) => acc + x, 0)).toBe(10));
-    test("склейка строк", () => expect(myReduce(["a", "b", "c"], (acc, x) => acc + x, "")).toBe("abc"));
+    test("произведение чисел", () => expect(myReduce([1, 2, 3, 4], (acc, x) => acc * x, 1)).toBe(24));
     test("нахождение максимума", () => expect(myReduce([3, 1, 7, 2], (acc, x) => (x > acc ? x : acc), -Infinity)).toBe(7));
     test("подсчёт элементов через reduce", () => expect(myReduce([1, 2, 3], (acc) => acc + 1, 0)).toBe(3));
     test("пустой массив возвращает initial", () => expect(myReduce([], (acc, x) => acc + x, 42)).toBe(42));
 });
 
 describe("Задача 13 — groupBy", () => {
-    test("чётные и нечётные", () => {
-        const result = groupBy([1, 2, 3, 4, 5], (x) => (x % 2 === 0 ? "even" : "odd"));
-        expect(result).toEqual({ odd: [1, 3, 5], even: [2, 4] });
-    });
     test("группировка по длине строки", () => {
-        const result = groupBy(["one", "two", "three"], (s) => s.length);
-        expect(result).toEqual({ 3: ["one", "two"], 5: ["three"] });
+        const result = groupBy(["one", "two", "three", "cat"], (s) => s.length === 3 ? "short" : "long");
+        expect(result).toEqual({ short: ["one", "two", "cat"], long: ["three"] });
+    });
+    test("группировка по первой букве", () => {
+        const result = groupBy(["ant", "bee", "ape", "bat"], (s) => s[0]);
+        expect(result).toEqual({ a: ["ant", "ape"], b: ["bee", "bat"] });
     });
     test("один элемент", () => {
-        expect(groupBy([1], (x) => x)).toEqual({ 1: [1] });
+        expect(groupBy(["hi"], (s) => s)).toEqual({ hi: ["hi"] });
     });
     test("все в одной группе", () => {
-        expect(groupBy([1, 2, 3], () => "all")).toEqual({ all: [1, 2, 3] });
+        expect(groupBy(["a", "b", "c"], () => "all")).toEqual({ all: ["a", "b", "c"] });
     });
 });
 
@@ -427,12 +423,12 @@ describe("Задача 14 — zip", () => {
     test("первый массив короче", () => expect(zip([1, 2], ["a", "b", "c"])).toEqual([[1, "a"], [2, "b"]]));
     test("второй массив короче", () => expect(zip([1, 2, 3], ["a"])).toEqual([[1, "a"]]));
     test("пустые массивы", () => expect(zip([], [])).toEqual([]));
-    test("один элемент", () => expect(zip([42], [true])).toEqual([[42, true]]));
+    test("один элемент", () => expect(zip([42], ["z"])).toEqual([[42, "z"]]));
 });
 
 describe("Задача 15 — myFlatMap", () => {
     test("каждый элемент в пару", () => expect(myFlatMap([1, 2, 3], (x) => [x, x * 10])).toEqual([1, 10, 2, 20, 3, 30]));
-    test("разбивка строк на буквы", () => expect(myFlatMap(["hi", "bye"], (s) => s.split(""))).toEqual(["h", "i", "b", "y", "e"]));
+    test("дублирование элементов", () => expect(myFlatMap([1, 2, 3], (x) => [x, x + 1])).toEqual([1, 2, 2, 3, 3, 4]));
     test("пустой массив", () => expect(myFlatMap([], (x) => [x])).toEqual([]));
     test("fn возвращает пустой массив — элементы исчезают", () => expect(myFlatMap([1, 2, 3], () => [])).toEqual([]));
     test("fn возвращает один элемент — как обычный map", () => expect(myFlatMap([1, 2, 3], (x) => [x + 1])).toEqual([2, 3, 4]));
