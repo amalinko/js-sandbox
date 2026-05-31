@@ -6,7 +6,9 @@
             "request": "launch",
             "name": "Debug with Bun",
             "program": "${file}",
-            "stopOnEntry": true
+            "stopOnEntry": true,
+            "preLaunchTask": "tsc check"
+
         }
     ]
 }
